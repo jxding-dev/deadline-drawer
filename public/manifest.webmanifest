@@ -1,7 +1,7 @@
 {
   "name": "까먹지말자",
   "short_name": "까먹지말자",
-  "description": "공과금·구독·예약 같은 기한을 까먹기 전에 챙기는 앱",
+  "description": "공과금·구독·예약 같은 기한을 까먹지말자에서 챙기는 앱",
   "lang": "ko",
   "start_url": "/deadline-drawer/",
   "scope": "/deadline-drawer/",
