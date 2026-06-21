@@ -12,7 +12,7 @@
   overflow: hidden;
 }
 
-@media (min-width: 431px) {
+@media (hover: hover) and (pointer: fine) and (min-width: 481px) {
   .app-frame {
     max-width: var(--app-max-width);
     border-left: 1px solid var(--border);
