@@ -10,8 +10,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   </React.StrictMode>,
 )
 
-// PWA: 기본 캐시 서비스 워커 등록. 실패해도 앱에는 영향 없음.
-if ('serviceWorker' in navigator) {
+// PWA: 프로덕션에서만 기본 캐시 서비스 워커 등록. 실패해도 앱에는 영향 없음.
+if (import.meta.env.PROD && 'serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register(`${import.meta.env.BASE_URL}sw.js`).catch(() => {})
   })

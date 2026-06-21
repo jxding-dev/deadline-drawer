@@ -1,10 +1,19 @@
 // 최소 캐시 서비스 워커 (stale-while-revalidate).
 // 실패해도 앱 동작에 영향 없도록 same-origin GET 만 다룬다.
-const CACHE = 'kkamukgi-v1'
+const CACHE = 'kkamukgi-v2'
 
 self.addEventListener('install', () => self.skipWaiting())
 
-self.addEventListener('activate', (e) => e.waitUntil(self.clients.claim()))
+self.addEventListener('activate', (e) =>
+  e.waitUntil(
+    (async () => {
+      // 이전 버전 캐시 정리
+      const keys = await caches.keys()
+      await Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k)))
+      await self.clients.claim()
+    })(),
+  ),
+)
 
 self.addEventListener('fetch', (e) => {
   const req = e.request
