@@ -1,0 +1,33 @@
+.filter-tabs {
+  display: flex;
+  gap: var(--space-2);
+  overflow-x: auto;
+  /* 가로 스크롤 — 스크롤바는 숨기고 끝까지 보이게 */
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  /* 본문 좌우 패딩을 넘어 화면 끝까지 스크롤되도록 */
+  margin: 0 calc(-1 * var(--space-4));
+  padding: 0 var(--space-4) var(--space-1);
+}
+
+.filter-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-tab {
+  flex: none; /* 찌그러짐 방지 */
+  white-space: nowrap;
+  padding: 8px 14px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text-dim);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+}
+
+.filter-tab[data-active='true'] {
+  color: #1a1205;
+  background: var(--accent);
+  border-color: var(--accent);
+}

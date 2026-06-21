@@ -1,0 +1,44 @@
+.summary-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  min-width: 0;
+  padding: var(--space-3) var(--space-3);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  /* 위쪽 얇은 컬러 바로 톤 구분 */
+  border-top: 2px solid var(--tone-color, var(--border));
+}
+
+.summary-card__count {
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--tone-color, var(--text));
+  font-variant-numeric: tabular-nums;
+}
+
+.summary-card__label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+
+.summary-card[data-tone='today'] {
+  --tone-color: var(--accent);
+}
+.summary-card[data-tone='overdue'] {
+  --tone-color: var(--danger);
+}
+.summary-card[data-tone='neutral'] {
+  --tone-color: var(--text-dim);
+}
+
+/* 0건이면 숫자 색을 죽여 시선을 뺏지 않게 */
+.summary-card[data-empty='true'] .summary-card__count {
+  color: var(--text-faint);
+}

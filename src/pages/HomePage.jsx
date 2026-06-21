@@ -1,0 +1,56 @@
+import SummaryCard from '../components/SummaryCard'
+import DeadlineCard from '../components/DeadlineCard'
+import EmptyState from '../components/EmptyState'
+import QuickAddButton from '../components/QuickAddButton'
+import {
+  getDueTodayItems,
+  getThisWeekItems,
+  getOverdueItems,
+  getUrgentItems,
+} from '../utils/deadlineFilters'
+import './HomePage.css'
+
+// 홈 = "위험한 기한 알림판". 지금 터질 기한을 가장 먼저 보여준다.
+export default function HomePage({ deadlines = [], onOpenItem, onQuickAdd }) {
+  const todayCount = getDueTodayItems(deadlines).length
+  const weekCount = getThisWeekItems(deadlines).length
+  const overdueCount = getOverdueItems(deadlines).length
+  const urgent = getUrgentItems(deadlines)
+
+  return (
+    <section className="home">
+      <div className="home__summary">
+        <SummaryCard label="오늘 마감" count={todayCount} tone="today" />
+        <SummaryCard label="이번 주" count={weekCount} tone="neutral" />
+        <SummaryCard label="기한 지남" count={overdueCount} tone="overdue" />
+      </div>
+
+      <div className="home__section">
+        <h2 className="home__heading">
+          지금 챙겨야 할 기한
+          {urgent.length > 0 && (
+            <span className="home__heading-count">{urgent.length}</span>
+          )}
+        </h2>
+
+        {urgent.length > 0 ? (
+          <ul className="home__list">
+            {urgent.map((item) => (
+              <li key={item.id}>
+                <DeadlineCard item={item} onOpen={onOpenItem} />
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <EmptyState
+            icon="✅"
+            title="지금 터질 기한은 없어요"
+            hint="오늘 마감이나 기한 지난 일이 생기면 여기에 바로 떠요."
+          />
+        )}
+      </div>
+
+      <QuickAddButton onClick={onQuickAdd} />
+    </section>
+  )
+}

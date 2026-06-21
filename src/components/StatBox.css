@@ -1,0 +1,45 @@
+.stat-box {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  padding: var(--space-3);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  border-top: 2px solid var(--tone-color, var(--border));
+}
+
+.stat-box__value {
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--tone-color, var(--text));
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-box__label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+
+.stat-box[data-tone='neutral'] {
+  --tone-color: var(--text);
+}
+.stat-box[data-tone='ok'] {
+  --tone-color: var(--ok);
+}
+.stat-box[data-tone='overdue'] {
+  --tone-color: var(--danger);
+}
+.stat-box[data-tone='hold'] {
+  --tone-color: var(--text-dim);
+}
+
+/* 0이면 숫자를 죽여 과한 강조를 피한다 */
+.stat-box[data-empty='true'] .stat-box__value {
+  color: var(--text-faint);
+}

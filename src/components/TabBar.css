@@ -1,0 +1,58 @@
+.tab-bar {
+  display: flex;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.tab {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  min-height: var(--tabbar-h);
+  padding: var(--space-2) var(--space-1);
+  color: var(--text-faint);
+  transition: color 0.15s ease;
+}
+
+/* active 상단 인디케이터 */
+.tab[data-active='true']::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 26px;
+  height: 2px;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+}
+
+.tab__icon {
+  font-size: 18px;
+  line-height: 1;
+  filter: grayscale(0.4);
+  opacity: 0.7;
+  transition: filter 0.15s ease, opacity 0.15s ease;
+}
+
+.tab__label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.tab[data-active='true'] {
+  color: var(--accent);
+}
+
+.tab[data-active='true'] .tab__icon {
+  filter: none;
+  opacity: 1;
+}
