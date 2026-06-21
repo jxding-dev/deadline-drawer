@@ -1,15 +1,21 @@
 .app-frame {
   width: 100%;
-  max-width: var(--app-max-width);
   margin: 0 auto;
-  height: 100%;
+  height: 100dvh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   background: var(--surface);
   /* 480px↑ 에서 중앙 모바일 프레임처럼 보이도록 양옆 경계 */
-  border-left: 1px solid var(--border);
-  border-right: 1px solid var(--border);
   overflow: hidden;
+}
+
+@media (min-width: 481px) {
+  .app-frame {
+    max-width: var(--app-max-width);
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+  }
 }
 
 .app-body {
