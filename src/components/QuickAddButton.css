@@ -19,7 +19,7 @@
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
 }
 
-@media (hover: hover) and (pointer: fine) and (min-width: 481px) {
+@media (min-width: 431px) {
   .quick-add {
     right: max(
       var(--space-4),
