@@ -3,10 +3,7 @@
 .quick-add {
   position: fixed;
   bottom: calc(var(--tabbar-h) + var(--space-4) + env(safe-area-inset-bottom));
-  right: max(
-    var(--space-4),
-    calc(50% - var(--app-max-width) / 2 + var(--space-4))
-  );
+  right: var(--space-4);
   z-index: 20;
   display: inline-flex;
   align-items: center;
@@ -20,6 +17,15 @@
   font-weight: 800;
   letter-spacing: -0.01em;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+}
+
+@media (hover: hover) and (pointer: fine) and (min-width: 481px) {
+  .quick-add {
+    right: max(
+      var(--space-4),
+      calc(50% - var(--app-max-width) / 2 + var(--space-4))
+    );
+  }
 }
 
 .quick-add__icon {
