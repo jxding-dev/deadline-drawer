@@ -1,6 +1,6 @@
 // 최소 캐시 서비스 워커 (stale-while-revalidate).
 // 실패해도 앱 동작에 영향 없도록 same-origin GET 만 다룬다.
-const CACHE = 'kkamukgi-v3'
+const CACHE = 'kkamukgi-v2'
 
 self.addEventListener('install', () => self.skipWaiting())
 
