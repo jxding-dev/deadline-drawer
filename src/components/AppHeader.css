@@ -9,18 +9,18 @@
   padding-top: max(var(--space-3), env(safe-area-inset-top));
   background: var(--surface);
   border-bottom: 1px solid var(--border);
-  gap: var(--space-2);
+  gap: var(--space-3);
 }
 
 .app-header__settings {
   flex: none;
   margin-left: auto;
-  width: 40px;
-  height: 40px;
+  width: 58px;
+  height: 58px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
+  font-size: 28px;
   border-radius: var(--radius);
   background: var(--surface-2);
   border: 1px solid var(--border);
@@ -29,12 +29,12 @@
 .app-header__titles {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 6px;
   min-width: 0;
 }
 
 .app-header__name {
-  font-size: 19px;
+  font-size: 26px;
   font-weight: 700;
   letter-spacing: -0.02em;
   /* 이름 옆 작은 포인트 — 약간의 긴장감 */
@@ -45,8 +45,8 @@
 
 .app-header__name::before {
   content: '';
-  width: 7px;
-  height: 7px;
+  width: 10px;
+  height: 10px;
   border-radius: var(--radius-pill);
   background: var(--accent);
   box-shadow: 0 0 0 4px var(--accent-soft);
@@ -54,6 +54,6 @@
 }
 
 .app-header__tagline {
-  font-size: 12px;
+  font-size: 16px;
   color: var(--text-dim);
 }
