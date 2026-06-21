@@ -9,9 +9,8 @@
 .deadline-card__main {
   display: flex;
   align-items: stretch;
-  gap: var(--space-4);
-  padding: var(--space-4);
-  min-height: 112px;
+  gap: var(--space-3);
+  padding: var(--space-3);
   width: 100%;
   text-align: left;
 }
@@ -27,17 +26,16 @@
 /* D-day 블록 — 가장 먼저 읽히는 영역 */
 .deadline-card__dday {
   flex: none;
-  width: 88px;
-  min-height: 84px;
+  width: 58px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 16px;
+  border-radius: 10px;
   background: var(--tone-soft, var(--surface-3));
 }
 
 .deadline-card__dday-value {
-  font-size: 24px;
+  font-size: 17px;
   font-weight: 800;
   letter-spacing: -0.03em;
   color: var(--tone-color, var(--text));
@@ -51,11 +49,11 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: var(--space-3);
+  gap: var(--space-2);
 }
 
 .deadline-card__title {
-  font-size: 22px;
+  font-size: 15px;
   font-weight: 700;
   line-height: 1.35;
   letter-spacing: -0.01em;
@@ -73,7 +71,7 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 6px;
-  font-size: 18px;
+  font-size: 12.5px;
   color: var(--text-dim);
   min-width: 0;
 }
@@ -81,7 +79,7 @@
 .deadline-card__category {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
 }
 
 .deadline-card__dot {
@@ -90,20 +88,20 @@
 
 .deadline-card__flag {
   flex: none;
-  font-size: 16px;
+  font-size: 11px;
   font-weight: 700;
   color: var(--danger);
   background: var(--danger-soft);
-  padding: 4px 10px;
+  padding: 2px 7px;
   border-radius: var(--radius-pill);
 }
 
 /* 상태 배지 — color 키를 CSS 변수로 매핑 */
 .deadline-card__status {
   flex: none;
-  font-size: 16px;
+  font-size: 11px;
   font-weight: 700;
-  padding: 4px 10px;
+  padding: 2px 7px;
   border-radius: var(--radius-pill);
   color: var(--text-dim);
   background: var(--surface-3);
@@ -160,8 +158,8 @@
 .deadline-card__action {
   flex: 1 1 0;
   min-width: 0;
-  min-height: 52px; /* 손가락 터치 영역 */
-  font-size: 15px;
+  min-height: 40px; /* 손가락 터치 영역 */
+  font-size: 12.5px;
   font-weight: 700;
   color: var(--text-dim);
   border-right: 1px solid var(--border);
