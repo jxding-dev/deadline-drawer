@@ -13,6 +13,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 // PWA: 기본 캐시 서비스 워커 등록. 실패해도 앱에는 영향 없음.
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js').catch(() => {})
+    navigator.serviceWorker.register(`${import.meta.env.BASE_URL}sw.js`).catch(() => {})
   })
 }
