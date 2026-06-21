@@ -174,7 +174,7 @@ export default function SettingsPage({
           <dl className="info-list">
             <div className="info-list__row">
               <dt>앱 이름</dt>
-              <dd>까먹기 전에</dd>
+              <dd>까먹지말자</dd>
             </div>
             <div className="info-list__row">
               <dt>저장 방식</dt>
