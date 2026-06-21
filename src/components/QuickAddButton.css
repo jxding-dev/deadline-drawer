@@ -3,10 +3,7 @@
 .quick-add {
   position: fixed;
   bottom: calc(var(--tabbar-h) + var(--space-4) + env(safe-area-inset-bottom));
-  right: max(
-    var(--space-4),
-    calc(50% - var(--app-max-width) / 2 + var(--space-4))
-  );
+  right: max(var(--space-4), env(safe-area-inset-right));
   z-index: 20;
   display: inline-flex;
   align-items: center;
