@@ -91,14 +91,15 @@ export default function App() {
     return { ok: true, count: res.data.deadlines.length }
   }
 
-  if (isLaunching) {
-    return <LaunchScreen />
-  }
+  const launchOverlay = isLaunching ? <LaunchScreen /> : null
 
   // 등록
   if (screen.type === 'add') {
     return (
-      <AddPage onSave={handleSave} onCancel={goTabs} categories={categories} />
+      <>
+        <AddPage onSave={handleSave} onCancel={goTabs} categories={categories} />
+        {launchOverlay}
+      </>
     )
   }
 
@@ -106,15 +107,18 @@ export default function App() {
   if (screen.type === 'edit') {
     const item = deadlines.find((d) => d.id === screen.id)
     return (
-      <EditPage
-        item={item}
-        categories={categories}
-        onSave={(values) => {
-          updateDeadline(screen.id, values)
-          setScreen({ type: 'detail', id: screen.id })
-        }}
-        onCancel={() => setScreen({ type: 'detail', id: screen.id })}
-      />
+      <>
+        <EditPage
+          item={item}
+          categories={categories}
+          onSave={(values) => {
+            updateDeadline(screen.id, values)
+            setScreen({ type: 'detail', id: screen.id })
+          }}
+          onCancel={() => setScreen({ type: 'detail', id: screen.id })}
+        />
+        {launchOverlay}
+      </>
     )
   }
 
@@ -122,65 +126,74 @@ export default function App() {
   if (screen.type === 'detail') {
     const item = deadlines.find((d) => d.id === screen.id)
     return (
-      <DetailPage
-        item={item}
-        onBack={goTabs}
-        onEdit={() => openEdit(screen.id)}
-        onComplete={() => completeDeadline(screen.id)}
-        onPostpone={(newDueDate) => postponeDeadline(screen.id, newDueDate)}
-        onHold={() => holdDeadline(screen.id)}
-        onRestore={() => restoreDeadline(screen.id)}
-        onDelete={() => {
-          deleteDeadline(screen.id)
-          goTabs()
-        }}
-      />
+      <>
+        <DetailPage
+          item={item}
+          onBack={goTabs}
+          onEdit={() => openEdit(screen.id)}
+          onComplete={() => completeDeadline(screen.id)}
+          onPostpone={(newDueDate) => postponeDeadline(screen.id, newDueDate)}
+          onHold={() => holdDeadline(screen.id)}
+          onRestore={() => restoreDeadline(screen.id)}
+          onDelete={() => {
+            deleteDeadline(screen.id)
+            goTabs()
+          }}
+        />
+        {launchOverlay}
+      </>
     )
   }
 
   // 설정
   if (screen.type === 'settings') {
     return (
-      <SettingsPage
-        categories={categories}
-        onAddCategory={addCategory}
-        onRemoveCategory={handleRemoveCategory}
-        onExport={handleExport}
-        onImportFile={handleImportFile}
-        onReset={resetDeadlines}
-        onClear={clearDeadlines}
-        onBack={goTabs}
-      />
+      <>
+        <SettingsPage
+          categories={categories}
+          onAddCategory={addCategory}
+          onRemoveCategory={handleRemoveCategory}
+          onExport={handleExport}
+          onImportFile={handleImportFile}
+          onReset={resetDeadlines}
+          onClear={clearDeadlines}
+          onBack={goTabs}
+        />
+        {launchOverlay}
+      </>
     )
   }
 
   return (
-    <AppLayout
-      activeTab={activeTab}
-      onTabChange={setActiveTab}
-      onOpenSettings={() => setScreen({ type: 'settings' })}
-    >
-      {activeTab === 'today' && (
-        <HomePage
-          deadlines={deadlines}
-          onOpenItem={openDetail}
-          onQuickAdd={() => setScreen({ type: 'add' })}
-          onViewAll={() => setActiveTab('all')}
-        />
-      )}
-      {activeTab === 'stats' && (
-        <StatsPage deadlines={deadlines} onOpenItem={openDetail} />
-      )}
-      {activeTab !== 'today' && activeTab !== 'stats' && (
-        <ListPage
-          key={activeTab}
-          deadlines={deadlines}
-          initialFilter={activeTab}
-          categories={categories}
-          onOpenItem={openDetail}
-          onQuickAdd={() => setScreen({ type: 'add' })}
-        />
-      )}
-    </AppLayout>
+    <>
+      <AppLayout
+        activeTab={activeTab}
+        onTabChange={setActiveTab}
+        onOpenSettings={() => setScreen({ type: 'settings' })}
+      >
+        {activeTab === 'today' && (
+          <HomePage
+            deadlines={deadlines}
+            onOpenItem={openDetail}
+            onQuickAdd={() => setScreen({ type: 'add' })}
+            onViewAll={() => setActiveTab('all')}
+          />
+        )}
+        {activeTab === 'stats' && (
+          <StatsPage deadlines={deadlines} onOpenItem={openDetail} />
+        )}
+        {activeTab !== 'today' && activeTab !== 'stats' && (
+          <ListPage
+            key={activeTab}
+            deadlines={deadlines}
+            initialFilter={activeTab}
+            categories={categories}
+            onOpenItem={openDetail}
+            onQuickAdd={() => setScreen({ type: 'add' })}
+          />
+        )}
+      </AppLayout>
+      {launchOverlay}
+    </>
   )
 }
