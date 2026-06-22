@@ -15,8 +15,46 @@ export function buildBackup(deadlines, customCategories) {
   }
 }
 
+function isValidDateOnly(value) {
+  if (value == null || value === '') return true
+  if (typeof value !== 'string') return false
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value)
+  if (!match) return false
+  const [, y, m, d] = match.map(Number)
+  const date = new Date(y, m - 1, d)
+  return (
+    date.getFullYear() === y &&
+    date.getMonth() === m - 1 &&
+    date.getDate() === d
+  )
+}
+
+function isValidDateTime(value) {
+  return value == null || (typeof value === 'string' && !Number.isNaN(Date.parse(value)))
+}
+
+function isValidCategory(x) {
+  return (
+    x &&
+    typeof x === 'object' &&
+    typeof x.id === 'string' &&
+    typeof x.label === 'string' &&
+    (x.icon == null || typeof x.icon === 'string')
+  )
+}
+
 function isValidDeadline(x) {
-  return x && typeof x === 'object' && typeof x.id === 'string' && typeof x.title === 'string'
+  return (
+    x &&
+    typeof x === 'object' &&
+    typeof x.id === 'string' &&
+    typeof x.title === 'string' &&
+    isValidDateOnly(x.dueDate) &&
+    isValidDateTime(x.createdAt) &&
+    isValidDateTime(x.updatedAt) &&
+    isValidDateTime(x.completedAt) &&
+    (x.postponedCount == null || Number.isFinite(x.postponedCount))
+  )
 }
 
 // 누락 필드를 기본값으로 채워 안전한 형태로 정규화.
@@ -25,14 +63,14 @@ function normalizeDeadline(d) {
     id: String(d.id),
     title: String(d.title),
     category: typeof d.category === 'string' ? d.category : 'etc',
-    dueDate: typeof d.dueDate === 'string' ? d.dueDate : null,
+    dueDate: d.dueDate || null,
     importance: ['low', 'medium', 'high'].includes(d.importance) ? d.importance : 'medium',
     status: ['pending', 'completed', 'postponed', 'onHold'].includes(d.status)
       ? d.status
       : 'pending',
     memo: typeof d.memo === 'string' ? d.memo : '',
-    createdAt: typeof d.createdAt === 'string' ? d.createdAt : nowISO(),
-    updatedAt: typeof d.updatedAt === 'string' ? d.updatedAt : nowISO(),
+    createdAt: d.createdAt || nowISO(),
+    updatedAt: d.updatedAt || nowISO(),
     postponedCount: Number.isFinite(d.postponedCount) ? d.postponedCount : 0,
     completedAt: typeof d.completedAt === 'string' ? d.completedAt : null,
   }
@@ -65,9 +103,19 @@ export function parseBackup(text) {
   }
 
   const deadlines = rawList.map(normalizeDeadline)
-  const categories = Array.isArray(data?.categories)
-    ? data.categories.filter((c) => c && c.id && c.label)
-    : []
+  const rawCategories = Array.isArray(data?.categories) ? data.categories : []
+  if (!rawCategories.every(isValidCategory)) {
+    return { ok: false, error: '카테고리 데이터 형식이 올바르지 않아요.' }
+  }
+
+  const categories = rawCategories
+    .filter((c) => c.id.trim() && c.label.trim())
+    .map((c) => ({
+      id: c.id,
+      label: c.label,
+      icon: c.icon || '📌',
+      custom: true,
+    }))
 
   return { ok: true, data: { deadlines, categories } }
 }

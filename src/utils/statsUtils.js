@@ -42,8 +42,8 @@ export function getMonthStats(items) {
 }
 
 /** 카테고리별 개수(0건 제외, 많은 순). */
-export function countByCategory(items) {
-  return DEFAULT_CATEGORIES.map((c) => ({
+export function countByCategory(items, categories = DEFAULT_CATEGORIES) {
+  return categories.map((c) => ({
     id: c.id,
     label: c.label,
     icon: c.icon,

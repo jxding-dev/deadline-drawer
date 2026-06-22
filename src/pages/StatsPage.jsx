@@ -44,13 +44,13 @@ function CountBars({ rows }) {
   )
 }
 
-export default function StatsPage({ deadlines = [], onOpenItem }) {
+export default function StatsPage({ deadlines = [], categories = [], onOpenItem }) {
   const base = new Date()
   const monthLabel = `${base.getFullYear()}년 ${base.getMonth() + 1}월`
 
   const monthItems = getMonthItems(deadlines, base)
   const stats = getMonthStats(monthItems)
-  const categoryRows = countByCategory(monthItems)
+  const categoryRows = countByCategory(monthItems, categories)
   const importanceRows = countByImportance(monthItems)
   const completed = getCompletedItems(monthItems)
   const missed = getMissedItems(monthItems)

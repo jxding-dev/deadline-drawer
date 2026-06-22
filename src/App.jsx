@@ -180,7 +180,11 @@ export default function App() {
           />
         )}
         {activeTab === 'stats' && (
-          <StatsPage deadlines={deadlines} onOpenItem={openDetail} />
+          <StatsPage
+            deadlines={deadlines}
+            categories={categories}
+            onOpenItem={openDetail}
+          />
         )}
         {activeTab !== 'today' && activeTab !== 'stats' && (
           <ListPage
