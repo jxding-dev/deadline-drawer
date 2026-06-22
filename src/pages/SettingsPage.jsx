@@ -77,8 +77,8 @@ export default function SettingsPage({
         )}
 
         {/* 카테고리 관리 */}
-        <section className="settings-section">
-          <h2 className="settings-section__title">카테고리 관리</h2>
+        <section className="settings-card">
+          <h2 className="settings-card__title">카테고리 관리</h2>
 
           <ul className="cat-list">
             {categories.map((c) => {
@@ -145,8 +145,8 @@ export default function SettingsPage({
         </section>
 
         {/* 데이터 관리 */}
-        <section className="settings-section">
-          <h2 className="settings-section__title">데이터 관리</h2>
+        <section className="settings-card">
+          <h2 className="settings-card__title">데이터 관리</h2>
           <div className="settings-actions">
             <button type="button" className="btn" onClick={onExport}>
               JSON 내보내기
@@ -169,8 +169,8 @@ export default function SettingsPage({
         </section>
 
         {/* 앱 정보 */}
-        <section className="settings-section">
-          <h2 className="settings-section__title">앱 정보</h2>
+        <section className="settings-card">
+          <h2 className="settings-card__title">앱 정보</h2>
           <dl className="info-list">
             <div className="info-list__row">
               <dt>앱 이름</dt>
@@ -188,8 +188,8 @@ export default function SettingsPage({
         </section>
 
         {/* 위험 영역 — 하단 배치 */}
-        <section className="settings-section settings-section--danger">
-          <h2 className="settings-section__title">위험 구역</h2>
+        <section className="settings-card settings-card--danger">
+          <h2 className="settings-card__title">위험 구역</h2>
 
           {pending === null && (
             <div className="settings-actions">

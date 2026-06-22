@@ -12,11 +12,12 @@ export default function TabBar({ active, onChange }) {
             type="button"
             className="tab"
             data-active={isActive}
-            data-tab={tab.id}
             aria-current={isActive ? 'page' : undefined}
             onClick={() => onChange(tab.id)}
           >
-            <span className="tab__icon" aria-hidden="true" />
+            <span className="tab__icon" aria-hidden="true">
+              {tab.icon}
+            </span>
             <span className="tab__label">{tab.label}</span>
           </button>
         )

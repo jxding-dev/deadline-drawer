@@ -1,19 +1,24 @@
 .monthly-summary {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: 16px;
-  background:
-    linear-gradient(145deg, rgba(88, 201, 168, 0.08), transparent 48%),
-    rgba(255, 255, 255, 0.035);
-  border: 1px solid rgba(255, 255, 255, 0.065);
-  border-radius: 18px;
+  gap: var(--space-3);
+}
+
+/* 2열 — 360px 에서도 안정적 */
+.monthly-summary__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-2);
 }
 
 .completion {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: var(--space-2);
+  padding: 14px var(--space-4);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 14px;
 }
 
 .completion__head {
@@ -24,22 +29,21 @@
 
 .completion__label {
   font-size: 13px;
-  font-weight: 720;
+  font-weight: 700;
   color: var(--text-dim);
 }
 
 .completion__value {
-  font-size: 28px;
-  font-weight: 820;
-  letter-spacing: -0.05em;
+  font-size: 16px;
+  font-weight: 800;
   color: var(--ok);
   font-variant-numeric: tabular-nums;
 }
 
 .completion__track {
-  height: 6px;
+  height: 7px;
   border-radius: var(--radius-pill);
-  background: rgba(255, 255, 255, 0.075);
+  background: var(--surface-3);
   overflow: hidden;
 }
 
@@ -49,42 +53,4 @@
   border-radius: var(--radius-pill);
   background: var(--ok);
   transition: width 0.25s ease;
-}
-
-.monthly-summary__list {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 6px;
-  margin-top: 4px;
-}
-
-.monthly-summary__row {
-  min-width: 0;
-  padding: 9px 7px;
-  background: rgba(0, 0, 0, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.045);
-  border-radius: 11px;
-}
-
-.monthly-summary__row dt {
-  font-size: 10.5px;
-  font-weight: 650;
-  color: var(--text-faint);
-  white-space: nowrap;
-}
-
-.monthly-summary__row dd {
-  margin-top: 4px;
-  font-size: 18px;
-  font-weight: 820;
-  color: var(--text);
-  font-variant-numeric: tabular-nums;
-}
-
-.monthly-summary__row[data-tone='ok'] dd {
-  color: var(--ok);
-}
-
-.monthly-summary__row[data-tone='overdue'] dd {
-  color: var(--danger);
 }

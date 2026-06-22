@@ -28,21 +28,16 @@ export default function ListPage({
   return (
     <section className="list-page">
       <header className="list-page__head">
-        <div>
-          <span className="list-page__eyebrow">Deadline List</span>
-          <h1 className="list-page__title">전체 기한</h1>
-        </div>
+        <h1 className="list-page__title">전체 기한</h1>
         <span className="list-page__count">{items.length}건</span>
       </header>
 
-      <div className="list-page__filters">
-        <FilterTabs active={filter} onChange={setFilter} />
-        <CategoryChips
-          active={category}
-          onChange={setCategory}
-          categories={categories}
-        />
-      </div>
+      <FilterTabs active={filter} onChange={setFilter} />
+      <CategoryChips
+        active={category}
+        onChange={setCategory}
+        categories={categories}
+      />
 
       {items.length > 0 ? (
         <ul className="list-page__list">

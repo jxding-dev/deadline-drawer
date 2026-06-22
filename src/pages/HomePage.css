@@ -1,78 +1,46 @@
 .home {
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: var(--space-5);
+  /* 하단 탭바 + 떠 있는 추가 버튼과 겹치지 않도록 여백 확보 */
   padding-bottom: calc(var(--tabbar-h) + var(--space-6));
 }
 
-.home-brief {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  padding: 18px;
-  background:
-    linear-gradient(145deg, rgba(240, 167, 47, 0.13), transparent 48%),
-    rgba(255, 255, 255, 0.035);
-  border: 1px solid rgba(255, 255, 255, 0.065);
-  border-radius: 20px;
-}
-
-.home-brief__eyebrow {
-  font-size: 11px;
-  font-weight: 780;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-
-.home-brief__text {
-  margin: 0;
-  font-size: 23px;
-  font-weight: 820;
-  line-height: 1.25;
-  letter-spacing: -0.04em;
-  color: var(--text);
-}
-
-.home-brief__metrics {
+/* 요약 카드 3개 — 360px 에서도 한 줄에 균등 배치 */
+.home__summary {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
+  gap: 10px;
 }
 
 .home__section {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
 }
 
 .home__heading {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: var(--space-2);
-  font-size: 15px;
-  font-weight: 780;
+  font-size: 16px;
+  font-weight: 800;
   letter-spacing: -0.01em;
   color: var(--text);
 }
 
 .home__heading-count {
-  min-width: 24px;
-  height: 24px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   font-size: 12px;
-  font-weight: 780;
+  font-weight: 700;
   color: var(--danger);
   background: var(--danger-soft);
-  border-radius: 9px;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
   font-variant-numeric: tabular-nums;
 }
 
 .home__list {
   display: flex;
   flex-direction: column;
-  gap: 9px;
+  gap: 10px;
 }

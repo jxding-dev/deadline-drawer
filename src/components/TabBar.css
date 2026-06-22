@@ -1,128 +1,50 @@
 .tab-bar {
   flex: 0 0 auto;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  background: rgba(18, 21, 28, 0.98);
+  display: flex;
+  background: rgba(23, 27, 36, 0.98);
   border-top: 1px solid rgba(255, 255, 255, 0.07);
-  padding: 6px 8px env(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .tab {
   position: relative;
+  flex: 1 1 0;
   min-width: 0;
-  min-height: var(--tabbar-h);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 5px;
+  gap: 3px;
+  min-height: var(--tabbar-h);
+  padding: 7px var(--space-1) 8px;
   color: var(--text-faint);
+  transition: color 0.15s ease;
 }
 
-.tab::before {
+/* active 상단 인디케이터 */
+.tab[data-active='true']::before {
   content: '';
   position: absolute;
-  top: 4px;
-  width: 22px;
-  height: 2px;
-  border-radius: 999px;
-  background: transparent;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 3px;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
 }
 
 .tab__icon {
-  width: 19px;
-  height: 19px;
-  position: relative;
-  color: currentColor;
-  opacity: 0.78;
-}
-
-.tab__icon::before,
-.tab__icon::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border: 2px solid currentColor;
-  border-radius: 6px;
-}
-
-.tab[data-tab='today'] .tab__icon::before {
-  border-radius: 999px 999px 999px 4px;
-  transform: rotate(-18deg) scale(0.82);
-}
-
-.tab[data-tab='today'] .tab__icon::after {
-  inset: 6px;
-  border-width: 0;
-  background: currentColor;
-  border-radius: 999px;
-}
-
-.tab[data-tab='week'] .tab__icon::before {
-  border-radius: 4px;
-}
-
-.tab[data-tab='week'] .tab__icon::after {
-  inset: 5px 2px auto;
-  height: 2px;
-  border: none;
-  background: currentColor;
-  box-shadow: 0 5px 0 currentColor;
-}
-
-.tab[data-tab='overdue'] .tab__icon::before {
-  border: none;
-  background: currentColor;
-  clip-path: polygon(50% 4%, 96% 90%, 4% 90%);
-  opacity: 0.92;
-}
-
-.tab[data-tab='overdue'] .tab__icon::after {
-  inset: 6px 8px 5px;
-  border: none;
-  border-radius: 999px;
-  background: var(--surface);
-}
-
-.tab[data-tab='all'] .tab__icon::before {
-  border-radius: 4px;
-}
-
-.tab[data-tab='all'] .tab__icon::after {
-  inset: 5px 4px;
-  border: none;
-  border-top: 2px solid currentColor;
-  border-bottom: 2px solid currentColor;
-}
-
-.tab[data-tab='stats'] .tab__icon::before {
-  border: none;
-  background: linear-gradient(
-    90deg,
-    currentColor 0 4px,
-    transparent 4px 7px,
-    currentColor 7px 11px,
-    transparent 11px 14px,
-    currentColor 14px 18px
-  );
-  border-radius: 2px;
-}
-
-.tab[data-tab='stats'] .tab__icon::after {
-  inset: 3px 0 0;
-  border: none;
-  background: linear-gradient(
-    90deg,
-    transparent 0 7px,
-    var(--surface) 7px 11px,
-    transparent 11px 14px,
-    var(--surface) 14px 18px
-  );
+  font-size: 19px;
+  line-height: 1;
+  filter: grayscale(0.65) saturate(0.8);
+  opacity: 0.58;
+  transition: filter 0.15s ease, opacity 0.15s ease;
 }
 
 .tab__label {
-  font-size: 10.5px;
-  font-weight: 650;
+  font-size: 11px;
+  font-weight: 600;
   letter-spacing: -0.01em;
   white-space: nowrap;
 }
@@ -131,10 +53,7 @@
   color: var(--accent);
 }
 
-.tab[data-active='true']::before {
-  background: var(--accent);
-}
-
-.tab[data-active='true'] .tab__label {
-  font-weight: 780;
+.tab[data-active='true'] .tab__icon {
+  filter: saturate(0.95);
+  opacity: 1;
 }

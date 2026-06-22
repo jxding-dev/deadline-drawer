@@ -16,26 +16,18 @@ export default function HomePage({ deadlines = [], onOpenItem, onQuickAdd }) {
   const weekCount = getThisWeekItems(deadlines).length
   const overdueCount = getOverdueItems(deadlines).length
   const urgent = getUrgentItems(deadlines)
-  const primary = urgent[0]
-  const rest = urgent.slice(1)
 
   return (
     <section className="home">
-      <section className="home-brief" aria-label="오늘 요약">
-        <span className="home-brief__eyebrow">Today Brief</span>
-        <p className="home-brief__text">
-          오늘 {todayCount}개, 놓친 기한 {overdueCount}개
-        </p>
-        <div className="home-brief__metrics">
-          <SummaryCard label="오늘" count={todayCount} tone="today" />
-          <SummaryCard label="이번 주" count={weekCount} tone="neutral" />
-          <SummaryCard label="지남" count={overdueCount} tone="overdue" />
-        </div>
-      </section>
+      <div className="home__summary">
+        <SummaryCard label="오늘 마감" count={todayCount} tone="today" />
+        <SummaryCard label="이번 주" count={weekCount} tone="neutral" />
+        <SummaryCard label="기한 지남" count={overdueCount} tone="overdue" />
+      </div>
 
       <div className="home__section">
         <h2 className="home__heading">
-          <span>지금 챙겨야 할 기한</span>
+          지금 챙겨야 할 기한
           {urgent.length > 0 && (
             <span className="home__heading-count">{urgent.length}</span>
           )}
@@ -43,16 +35,7 @@ export default function HomePage({ deadlines = [], onOpenItem, onQuickAdd }) {
 
         {urgent.length > 0 ? (
           <ul className="home__list">
-            {primary && (
-              <li key={primary.id}>
-                <DeadlineCard
-                  item={primary}
-                  variant="featured"
-                  onOpen={onOpenItem}
-                />
-              </li>
-            )}
-            {rest.map((item) => (
+            {urgent.map((item) => (
               <li key={item.id}>
                 <DeadlineCard item={item} onOpen={onOpenItem} />
               </li>

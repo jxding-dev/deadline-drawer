@@ -14,7 +14,7 @@ export default function AppHeader({ onOpenSettings }) {
           onClick={onOpenSettings}
           aria-label="설정"
         >
-          <span aria-hidden="true" />
+          ⚙️
         </button>
       )}
     </header>
