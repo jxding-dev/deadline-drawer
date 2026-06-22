@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import AppLayout from './components/AppLayout'
+import LaunchScreen from './components/LaunchScreen'
 import HomePage from './pages/HomePage'
 import ListPage from './pages/ListPage'
 import AddPage from './pages/AddPage'
@@ -14,6 +15,7 @@ import { buildBackup, parseBackup } from './utils/backup'
 import { toISODateString } from './utils/dateUtils'
 
 export default function App() {
+  const [isLaunching, setIsLaunching] = useState(true)
   const [activeTab, setActiveTab] = useState(DEFAULT_TAB)
   // 오버레이 라우팅: { type: 'tabs' | 'add' | 'detail' | 'edit' | 'settings', id? }
   const [screen, setScreen] = useState({ type: 'tabs' })
@@ -40,6 +42,11 @@ export default function App() {
     removeCategory,
     replaceCustomCategories,
   } = useCategories()
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setIsLaunching(false), 1500)
+    return () => window.clearTimeout(timer)
+  }, [])
 
   const goTabs = () => setScreen({ type: 'tabs' })
   const openDetail = (item) => setScreen({ type: 'detail', id: item.id })
@@ -82,6 +89,10 @@ export default function App() {
     importDeadlines(res.data.deadlines)
     replaceCustomCategories(res.data.categories)
     return { ok: true, count: res.data.deadlines.length }
+  }
+
+  if (isLaunching) {
+    return <LaunchScreen />
   }
 
   // 등록

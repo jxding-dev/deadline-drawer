@@ -7,8 +7,8 @@
   "scope": "/deadline-drawer/",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#14161c",
-  "theme_color": "#14161c",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
   "icons": [
     {
       "src": "/deadline-drawer/icons/icon-192.png",
