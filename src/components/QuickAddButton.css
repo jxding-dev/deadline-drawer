@@ -7,13 +7,13 @@
   z-index: 20;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  height: 54px;
-  padding: 0 22px 0 18px;
-  border-radius: 28px;
+  gap: 7px;
+  height: 46px;
+  padding: 0 17px 0 14px;
+  border-radius: var(--radius-pill);
   background: var(--ink);
   color: var(--on-ink);
-  font-size: 17px;
+  font-size: 14px;
   font-weight: 800;
   letter-spacing: -0.01em;
   box-shadow: 0 10px 24px rgba(20, 23, 33, 0.22);
@@ -25,5 +25,5 @@
 }
 
 .quick-add__icon svg {
-  stroke-width: 2.6;
+  stroke-width: 2.4;
 }

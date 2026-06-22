@@ -3,7 +3,7 @@
   display: flex;
   background: var(--header-bg);
   border-top: 1px solid var(--border);
-  padding: 6px 0 env(safe-area-inset-bottom);
+  padding: 0 0 env(safe-area-inset-bottom);
 }
 
 .tab {
@@ -14,9 +14,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 5px;
+  gap: 3px;
   min-height: var(--tabbar-h);
-  padding: 8px var(--space-1) 7px;
+  padding: 7px var(--space-1) 8px;
   color: var(--text-faint);
   transition: color 0.15s ease;
 }
@@ -28,8 +28,8 @@
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 28px;
-  height: 4px;
+  width: 24px;
+  height: 3px;
   border-radius: var(--radius-pill);
   background: #9ba0a8;
 }
@@ -48,8 +48,8 @@
 }
 
 .tab__label {
-  font-size: 12px;
-  font-weight: 700;
+  font-size: 11px;
+  font-weight: 650;
   letter-spacing: -0.01em;
   white-space: nowrap;
 }

@@ -5,8 +5,8 @@
   min-height: var(--header-h);
   display: flex;
   align-items: center;
-  padding: 22px var(--space-4) 20px;
-  padding-top: max(22px, env(safe-area-inset-top));
+  padding: var(--space-4) var(--space-4) var(--space-3);
+  padding-top: max(var(--space-4), env(safe-area-inset-top));
   background: var(--header-bg);
   border-bottom: 1px solid var(--border);
   gap: var(--space-3);
@@ -15,8 +15,8 @@
 .app-header__bell,
 .app-header__settings {
   flex: none;
-  width: 48px;
-  height: 48px;
+  width: 42px;
+  height: 42px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -29,10 +29,10 @@
 
 .app-header__settings {
   margin-left: auto;
-  border-radius: 24px;
+  border-radius: 16px;
   background: #fff;
   border: 1px solid var(--border);
-  box-shadow: 0 12px 30px rgba(20, 23, 33, 0.08);
+  box-shadow: 0 8px 20px rgba(20, 23, 33, 0.06);
 }
 
 .app-header__bell + .app-header__settings {
@@ -47,12 +47,12 @@
 }
 
 .app-header__name {
-  font-size: 29px;
+  font-size: 23px;
   font-weight: 800;
-  letter-spacing: -0.055em;
+  letter-spacing: -0.035em;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 9px;
 }
 
 .app-header__logo {
@@ -63,7 +63,7 @@
 }
 
 .app-header__logo svg {
-  stroke-width: 4.5;
+  stroke-width: 4;
 }
 
 .app-header__settings svg {
@@ -84,7 +84,7 @@
 }
 
 .app-header__tagline {
-  font-size: 16px;
+  font-size: 13px;
   font-weight: 500;
   color: var(--text-dim);
 }
