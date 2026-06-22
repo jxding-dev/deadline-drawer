@@ -1,13 +1,12 @@
 .filter-tabs {
   display: flex;
-  gap: 6px;
+  gap: 2px;
+  padding: 4px;
   overflow-x: auto;
-  /* 가로 스크롤 — 스크롤바는 숨기고 끝까지 보이게 */
   scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
-  /* 본문 좌우 패딩을 넘어 화면 끝까지 스크롤되도록 */
-  margin: 0 calc(-1 * var(--space-4));
-  padding: 0 var(--space-4) var(--space-1);
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.055);
+  border-radius: 14px;
 }
 
 .filter-tabs::-webkit-scrollbar {
@@ -15,19 +14,17 @@
 }
 
 .filter-tab {
-  flex: none; /* 찌그러짐 방지 */
+  flex: 1 0 auto;
+  min-height: 34px;
+  padding: 0 12px;
+  border-radius: 10px;
+  font-size: 12.5px;
+  font-weight: 720;
+  color: var(--text-faint);
   white-space: nowrap;
-  padding: 7px 12px;
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--text-dim);
-  background: rgba(255, 255, 255, 0.025);
-  border: 1px solid transparent;
-  border-radius: 11px;
 }
 
 .filter-tab[data-active='true'] {
-  color: var(--accent);
-  background: var(--accent-soft);
-  border-color: rgba(240, 167, 47, 0.28);
+  color: #17110a;
+  background: var(--accent);
 }

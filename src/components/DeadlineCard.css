@@ -1,28 +1,19 @@
 .deadline-card {
+  --tone-color: var(--text-faint);
+  --tone-soft: rgba(255, 255, 255, 0.04);
   position: relative;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.018), transparent), var(--surface-2);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  border-left: none;
+  background: rgba(255, 255, 255, 0.028);
+  border: 1px solid rgba(255, 255, 255, 0.055);
+  border-radius: 14px;
   overflow: hidden;
-  box-shadow: var(--shadow-card);
-}
-
-.deadline-card::before {
-  content: '';
-  position: absolute;
-  inset: 12px auto 12px 0;
-  width: 3px;
-  border-radius: 0 var(--radius-pill) var(--radius-pill) 0;
-  background: var(--tone-color, var(--border));
 }
 
 .deadline-card__main {
   display: flex;
-  align-items: stretch;
-  gap: var(--space-3);
-  padding: 14px 14px 14px 16px;
+  align-items: flex-start;
+  gap: 11px;
   width: 100%;
+  padding: 13px 12px;
   text-align: left;
 }
 
@@ -31,51 +22,62 @@
 }
 
 .deadline-card__main[role='button']:active {
-  background: var(--surface-3);
+  background: rgba(255, 255, 255, 0.045);
 }
 
-/* D-day 블록 — 가장 먼저 읽히는 영역 */
-.deadline-card__dday {
-  flex: none;
-  width: 60px;
-  min-height: 56px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 14px;
-  background: var(--tone-soft, var(--surface-3));
-}
-
-.deadline-card__dday-value {
-  font-size: 16px;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  color: var(--tone-color, var(--text));
-  font-variant-numeric: tabular-nums;
-  white-space: nowrap;
+.deadline-card__marker {
+  flex: 0 0 auto;
+  width: 4px;
+  height: 40px;
+  margin-top: 2px;
+  border-radius: var(--radius-pill);
+  background: var(--tone-color);
+  opacity: 0.9;
 }
 
 .deadline-card__body {
   flex: 1 1 auto;
-  min-width: 0; /* 말줄임이 동작하려면 필수 */
+  min-width: 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   gap: 7px;
 }
 
+.deadline-card__top {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  min-width: 0;
+}
+
 .deadline-card__title {
-  font-size: 16px;
-  font-weight: 700;
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 15.5px;
+  font-weight: 760;
   line-height: 1.35;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   color: var(--text);
-  /* 길면 2줄까지만, 이후 말줄임 */
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   word-break: break-word;
+}
+
+.deadline-card__dday {
+  flex: none;
+  min-width: 48px;
+  padding: 4px 8px;
+  border-radius: 9px;
+  font-size: 12px;
+  font-weight: 820;
+  line-height: 1;
+  color: var(--tone-color);
+  background: var(--tone-soft);
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
 
 .deadline-card__meta {
@@ -84,101 +86,139 @@
   flex-wrap: wrap;
   gap: 7px;
   font-size: 12.5px;
+  font-weight: 560;
   color: var(--text-dim);
-  min-width: 0;
+}
+
+.deadline-card__category-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--tone-color);
+  opacity: 0.72;
 }
 
 .deadline-card__category {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
+  color: var(--text-dim);
 }
 
-.deadline-card__category span[aria-hidden='true'] {
-  opacity: 0.78;
-  filter: saturate(0.65);
+.deadline-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-height: 0;
 }
 
-.deadline-card__dot {
-  color: var(--text-faint);
+.deadline-card__tags:empty {
+  display: none;
+}
+
+.deadline-card__flag,
+.deadline-card__status {
+  flex: none;
+  padding: 3px 7px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 760;
+  line-height: 1;
 }
 
 .deadline-card__flag {
-  flex: none;
-  font-size: 11.5px;
-  font-weight: 700;
   color: var(--danger);
   background: var(--danger-soft);
-  padding: 3px 8px;
-  border-radius: var(--radius-pill);
 }
 
-/* 상태 배지 — color 키를 CSS 변수로 매핑 */
 .deadline-card__status {
-  flex: none;
-  font-size: 11.5px;
-  font-weight: 700;
-  padding: 3px 8px;
-  border-radius: var(--radius-pill);
   color: var(--text-dim);
-  background: var(--surface-3);
+  background: rgba(255, 255, 255, 0.05);
 }
+
 .deadline-card__status[data-color='ok'] {
   color: var(--ok);
   background: var(--ok-soft);
 }
+
 .deadline-card__status[data-color='accent'] {
   color: var(--accent);
   background: var(--accent-soft);
 }
 
-/* 톤별 색 매핑 */
 .deadline-card[data-tone='overdue'] {
   --tone-color: var(--danger);
   --tone-soft: var(--danger-soft);
 }
+
 .deadline-card[data-tone='today'] {
   --tone-color: var(--accent);
   --tone-soft: var(--accent-soft);
 }
+
 .deadline-card[data-tone='normal'] {
-  --tone-color: var(--text-faint);
-  --tone-soft: var(--surface-3);
-}
-.deadline-card[data-tone='done'],
-.deadline-card[data-tone='hold'] {
-  --tone-color: var(--border);
-  --tone-soft: var(--surface-3);
+  --tone-color: #7f8798;
+  --tone-soft: rgba(127, 135, 152, 0.12);
 }
 
-/* 완료 항목은 살짝 흐리게 */
-.deadline-card[data-tone='done'] {
-  opacity: 0.62;
+.deadline-card[data-tone='done'],
+.deadline-card[data-tone='hold'] {
+  --tone-color: var(--text-faint);
+  --tone-soft: rgba(255, 255, 255, 0.045);
 }
+
+.deadline-card[data-tone='done'] {
+  opacity: 0.64;
+}
+
 .deadline-card[data-tone='done'] .deadline-card__title {
   text-decoration: line-through;
   text-decoration-color: var(--text-faint);
 }
 
-/* 중요도 high — 테두리를 또렷하게 해 더 강조 */
 .deadline-card[data-high='true'] {
-  border-color: color-mix(in srgb, var(--tone-color) 55%, var(--border));
+  background:
+    linear-gradient(90deg, rgba(239, 100, 95, 0.09), transparent 42%),
+    rgba(255, 255, 255, 0.032);
 }
 
-/* 액션 바 */
+.deadline-card[data-variant='featured'] {
+  background:
+    linear-gradient(135deg, rgba(240, 167, 47, 0.12), transparent 45%),
+    rgba(255, 255, 255, 0.045);
+  border-color: rgba(240, 167, 47, 0.24);
+}
+
+.deadline-card[data-variant='featured'] .deadline-card__main {
+  padding: 16px 14px;
+}
+
+.deadline-card[data-variant='featured'] .deadline-card__marker {
+  height: 54px;
+}
+
+.deadline-card[data-variant='featured'] .deadline-card__title {
+  font-size: 17px;
+}
+
+.deadline-card[data-variant='featured'] .deadline-card__dday {
+  min-width: 58px;
+  padding: 6px 9px;
+  font-size: 13px;
+  border-radius: 10px;
+}
+
 .deadline-card__actions {
-  display: flex;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border-top: 1px solid rgba(255, 255, 255, 0.055);
+  background: rgba(0, 0, 0, 0.08);
 }
 
 .deadline-card__action {
-  flex: 1 1 0;
   min-width: 0;
-  min-height: 42px; /* 손가락 터치 영역 */
-  font-size: 12.5px;
-  font-weight: 700;
+  min-height: 38px;
+  font-size: 12px;
+  font-weight: 720;
   color: var(--text-dim);
-  border-right: 1px solid var(--border);
+  border-right: 1px solid rgba(255, 255, 255, 0.055);
 }
 
 .deadline-card__action:last-child {
@@ -191,5 +231,5 @@
 
 .deadline-card__action:disabled {
   color: var(--text-faint);
-  opacity: 0.55;
+  opacity: 0.45;
 }

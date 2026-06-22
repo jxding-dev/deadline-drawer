@@ -24,6 +24,7 @@ const ACTIONS = [
 
 export default function DeadlineCard({
   item,
+  variant = 'list',
   onOpen,
   onComplete,
   onPostpone,
@@ -46,7 +47,12 @@ export default function DeadlineCard({
   const hasActions = Object.values(handlers).some(Boolean)
 
   return (
-    <article className="deadline-card" data-tone={tone} data-high={isHigh}>
+    <article
+      className="deadline-card"
+      data-tone={tone}
+      data-high={isHigh}
+      data-variant={variant}
+    >
       <div
         className="deadline-card__main"
         role={onOpen ? 'button' : undefined}
@@ -63,31 +69,26 @@ export default function DeadlineCard({
             : undefined
         }
       >
-        <div className="deadline-card__dday">
-          <span className="deadline-card__dday-value">
-            {item.dueDate ? formatDday(item.dueDate) : '–'}
-          </span>
-        </div>
+        <span className="deadline-card__marker" aria-hidden="true" />
 
         <div className="deadline-card__body">
-          <h3 className="deadline-card__title">{item.title}</h3>
-          <div className="deadline-card__meta">
-            <span className="deadline-card__category">
-              <span aria-hidden="true">{category.icon}</span>
-              {category.label}
+          <div className="deadline-card__top">
+            <h3 className="deadline-card__title">{item.title}</h3>
+            <span className="deadline-card__dday">
+              {item.dueDate ? formatDday(item.dueDate) : '–'}
             </span>
-            {item.dueDate && (
-              <>
-                <span className="deadline-card__dot" aria-hidden="true">·</span>
-                <span>{formatDate(item.dueDate, 'compact')}</span>
-              </>
-            )}
+          </div>
+
+          <div className="deadline-card__meta">
+            <span className="deadline-card__category-dot" aria-hidden="true" />
+            <span className="deadline-card__category">{category.label}</span>
+            {item.dueDate && <span>{formatDate(item.dueDate, 'compact')}</span>}
+          </div>
+
+          <div className="deadline-card__tags" aria-label="상태">
             {isHigh && <span className="deadline-card__flag">중요</span>}
             {item.status !== 'pending' && (
-              <span
-                className="deadline-card__status"
-                data-color={status.color}
-              >
+              <span className="deadline-card__status" data-color={status.color}>
                 {status.label}
               </span>
             )}

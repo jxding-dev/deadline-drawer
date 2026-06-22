@@ -70,8 +70,8 @@ export default function DeadlineForm({
   return (
     <form className="deadline-form" onSubmit={handleSubmit} noValidate>
       <div className="deadline-form__fields">
-        {/* 제목 */}
-        <label className="field">
+        <section className="form-section form-section--title">
+          <label className="field field--title">
           <span className="field__label">제목</span>
           <input
             className="field__input"
@@ -83,94 +83,101 @@ export default function DeadlineForm({
             autoComplete="off"
           />
           {errors.title && <span className="field__error">{errors.title}</span>}
-        </label>
+          </label>
+        </section>
 
-        {/* 카테고리 */}
-        <div className="field">
-          <span className="field__label">카테고리</span>
-          <div className="choice-grid">
-            {categories.map((c) => (
-              <button
-                key={c.id}
-                type="button"
-                className="choice"
-                data-active={values.category === c.id}
-                onClick={() => setField('category', c.id)}
-              >
-                <span aria-hidden="true">{c.icon}</span>
-                {c.label}
-              </button>
-            ))}
+        <section className="form-section">
+          <div className="field">
+            <span className="field__label">카테고리</span>
+            <div className="choice-grid">
+              {categories.map((c) => (
+                <button
+                  key={c.id}
+                  type="button"
+                  className="choice"
+                  data-active={values.category === c.id}
+                  onClick={() => setField('category', c.id)}
+                >
+                  <span aria-hidden="true">{c.icon}</span>
+                  {c.label}
+                </button>
+              ))}
+            </div>
+            {errors.category && (
+              <span className="field__error">{errors.category}</span>
+            )}
           </div>
-          {errors.category && (
-            <span className="field__error">{errors.category}</span>
-          )}
-        </div>
+        </section>
 
-        {/* 마감일 */}
-        <div className="field">
-          <span className="field__label">마감일</span>
-          <input
-            className="field__input"
-            type="date"
-            value={values.dueDate}
-            onChange={(e) => setField('dueDate', e.target.value)}
-          />
-          <div className="date-presets">
-            {DATE_PRESETS.map((p) => (
-              <button
-                key={p.label}
-                type="button"
-                className="date-preset"
-                onClick={() =>
-                  setField('dueDate', toISODateString(addDays(new Date(), p.offset)))
-                }
-              >
-                {p.label}
-              </button>
-            ))}
+        <section className="form-section">
+          <div className="field">
+            <span className="field__label">마감일</span>
+            <div className="date-row">
+              <input
+                className="field__input"
+                type="date"
+                value={values.dueDate}
+                onChange={(e) => setField('dueDate', e.target.value)}
+              />
+              <div className="date-presets">
+                {DATE_PRESETS.map((p) => (
+                  <button
+                    key={p.label}
+                    type="button"
+                    className="date-preset"
+                    onClick={() =>
+                      setField('dueDate', toISODateString(addDays(new Date(), p.offset)))
+                    }
+                  >
+                    {p.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+            {errors.dueDate && (
+              <span className="field__error">{errors.dueDate}</span>
+            )}
           </div>
-          {errors.dueDate && (
-            <span className="field__error">{errors.dueDate}</span>
-          )}
-        </div>
+        </section>
 
-        {/* 중요도 */}
-        <div className="field">
-          <span className="field__label">중요도</span>
-          <div className="segmented">
-            {IMPORTANCE_OPTIONS.map((opt) => (
-              <button
-                key={opt.id}
-                type="button"
-                className="segmented__item"
-                data-active={values.importance === opt.id}
-                data-color={opt.color}
-                onClick={() => setField('importance', opt.id)}
-              >
-                {opt.label}
-              </button>
-            ))}
+        <section className="form-section">
+          <div className="field">
+            <span className="field__label">중요도</span>
+            <div className="segmented">
+              {IMPORTANCE_OPTIONS.map((opt) => (
+                <button
+                  key={opt.id}
+                  type="button"
+                  className="segmented__item"
+                  data-active={values.importance === opt.id}
+                  data-color={opt.color}
+                  onClick={() => setField('importance', opt.id)}
+                >
+                  {opt.label}
+                </button>
+              ))}
+            </div>
+            {errors.importance && (
+              <span className="field__error">{errors.importance}</span>
+            )}
           </div>
-          {errors.importance && (
-            <span className="field__error">{errors.importance}</span>
-          )}
-        </div>
+        </section>
 
-        {/* 메모 (선택) */}
-        <label className="field">
-          <span className="field__label">
-            메모 <span className="field__optional">선택</span>
-          </span>
-          <textarea
-            className="field__input field__textarea"
-            value={values.memo}
-            onChange={(e) => setField('memo', e.target.value)}
-            placeholder="놓치면 안 되는 이유, 준비물 등"
-            rows={3}
-            maxLength={300}
-          />
-        </label>
+        <section className="form-section">
+          <label className="field">
+            <span className="field__label">
+              메모 <span className="field__optional">선택</span>
+            </span>
+            <textarea
+              className="field__input field__textarea"
+              value={values.memo}
+              onChange={(e) => setField('memo', e.target.value)}
+              placeholder="놓치면 안 되는 이유, 준비물 등"
+              rows={3}
+              maxLength={300}
+            />
+          </label>
+        </section>
       </div>
 
       <div className="deadline-form__actions">
