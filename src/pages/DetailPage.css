@@ -127,7 +127,7 @@
   background: var(--surface-2);
   border: 1px solid var(--border);
   border-radius: 14px;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .detail-meta__row {
@@ -135,9 +135,10 @@
   justify-content: space-between;
   align-items: center;
   gap: var(--space-3);
-  min-height: 48px;
-  padding: 11px var(--space-4);
+  min-height: 54px;
+  padding: 13px var(--space-4);
   border-bottom: 1px solid var(--border);
+  line-height: 1.35;
 }
 .detail-meta__row:last-child {
   border-bottom: none;
@@ -145,13 +146,16 @@
 
 .detail-meta__row dt {
   font-size: 13px;
+  line-height: 1.35;
   color: var(--text-dim);
 }
 .detail-meta__row dd {
   font-size: 14px;
   font-weight: 700;
+  line-height: 1.35;
   color: var(--text);
   text-align: right;
+  white-space: nowrap;
 }
 
 /* 메모 */
