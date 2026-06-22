@@ -7,14 +7,14 @@ export default function AppHeader({ onOpenSettings }) {
       <div className="app-header__titles">
         <h1 className="app-header__name">
           <span className="app-header__logo" aria-hidden="true">
-            <Icon name="logo" size={24} />
+            <Icon name="logo" size={20} />
           </span>
           까먹지말자
         </h1>
         <p className="app-header__tagline">놓치기 전에 꺼내보기</p>
       </div>
       <span className="app-header__bell" aria-hidden="true">
-        <Icon name="bell" size={21} />
+        <Icon name="bell" size={18} />
       </span>
       {onOpenSettings && (
         <button
@@ -23,7 +23,7 @@ export default function AppHeader({ onOpenSettings }) {
           onClick={onOpenSettings}
           aria-label="설정"
         >
-          <Icon name="settings" size={22} />
+          <Icon name="settings" size={19} />
         </button>
       )}
     </header>
