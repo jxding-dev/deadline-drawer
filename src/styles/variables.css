@@ -38,7 +38,7 @@
 
   /* 레이아웃 */
   --app-max-width: 480px;
-  --header-h: 68px;
+  --header-h: 65px;
   --tabbar-h: 64px;
 
   /* 타이포 — 외부 폰트 없이 시스템 스택 */
