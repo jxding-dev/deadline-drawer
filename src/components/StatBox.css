@@ -4,9 +4,10 @@
   gap: 4px;
   min-width: 0;
   padding: var(--space-3);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.018), transparent), var(--surface-2);
+  background: var(--surface-2);
   border: 1px solid var(--border);
   border-radius: 14px;
+  box-shadow: var(--shadow-card);
   border-top: 3px solid var(--tone-color, var(--border));
 }
 

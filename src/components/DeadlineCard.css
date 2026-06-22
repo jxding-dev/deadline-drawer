@@ -1,6 +1,6 @@
 .deadline-card {
   position: relative;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.018), transparent), var(--surface-2);
+  background: var(--surface-2);
   border: 1px solid var(--border);
   border-radius: 16px;
   border-left: none;
@@ -8,13 +8,14 @@
   box-shadow: var(--shadow-card);
 }
 
+/* 왼쪽 컬러 바 — 오늘/지남 등 강조 톤에서만 표시 */
 .deadline-card::before {
   content: '';
   position: absolute;
   inset: 12px auto 12px 0;
   width: 3px;
   border-radius: 0 var(--radius-pill) var(--radius-pill) 0;
-  background: var(--tone-color, var(--border));
+  background: var(--tone-bar, transparent);
 }
 
 .deadline-card__main {
@@ -43,7 +44,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 14px;
-  background: var(--tone-soft, var(--surface-3));
+  background: var(--surface-3);
 }
 
 .deadline-card__dday-value {
@@ -132,23 +133,21 @@
   background: var(--accent-soft);
 }
 
-/* 톤별 색 매핑 */
+/* 톤별 색 매핑 — tone-color: D-day 글자색 / tone-bar: 왼쪽 강조 바 */
 .deadline-card[data-tone='overdue'] {
   --tone-color: var(--danger);
-  --tone-soft: var(--danger-soft);
+  --tone-bar: var(--danger);
 }
 .deadline-card[data-tone='today'] {
   --tone-color: var(--accent);
-  --tone-soft: var(--accent-soft);
+  --tone-bar: var(--accent);
 }
 .deadline-card[data-tone='normal'] {
-  --tone-color: var(--text-faint);
-  --tone-soft: var(--surface-3);
+  --tone-color: var(--text-dim);
 }
 .deadline-card[data-tone='done'],
 .deadline-card[data-tone='hold'] {
-  --tone-color: var(--border);
-  --tone-soft: var(--surface-3);
+  --tone-color: var(--text-faint);
 }
 
 /* 완료 항목은 살짝 흐리게 */
@@ -168,7 +167,7 @@
 /* 액션 바 */
 .deadline-card__actions {
   display: flex;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid var(--border);
 }
 
 .deadline-card__action {

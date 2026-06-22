@@ -17,17 +17,17 @@
 .filter-tab {
   flex: none; /* 찌그러짐 방지 */
   white-space: nowrap;
-  padding: 7px 12px;
+  padding: 8px 14px;
   font-size: 13px;
   font-weight: 700;
   color: var(--text-dim);
-  background: rgba(255, 255, 255, 0.025);
-  border: 1px solid transparent;
-  border-radius: 11px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
 }
 
 .filter-tab[data-active='true'] {
-  color: var(--accent);
-  background: var(--accent-soft);
-  border-color: rgba(240, 167, 47, 0.28);
+  color: var(--on-ink);
+  background: var(--ink);
+  border-color: var(--ink);
 }

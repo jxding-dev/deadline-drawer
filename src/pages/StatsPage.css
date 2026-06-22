@@ -58,7 +58,7 @@
   font-size: 13px;
   color: var(--text-faint);
   padding: var(--space-3) var(--space-4);
-  background: rgba(255, 255, 255, 0.025);
+  background: var(--surface-3);
   border: 1px dashed var(--border);
   border-radius: 14px;
 }

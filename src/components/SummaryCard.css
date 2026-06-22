@@ -6,9 +6,10 @@
   min-width: 0;
   min-height: 76px;
   padding: 13px 12px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.025), transparent), var(--surface-2);
+  background: var(--surface-2);
   border: 1px solid var(--border);
   border-radius: 14px;
+  box-shadow: var(--shadow-card);
   /* 위쪽 얇은 컬러 바로 톤 구분 */
   border-top: 3px solid var(--tone-color, var(--border));
 }

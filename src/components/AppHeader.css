@@ -7,7 +7,7 @@
   align-items: center;
   padding: var(--space-4) var(--space-4) var(--space-3);
   padding-top: max(var(--space-4), env(safe-area-inset-top));
-  background: rgba(23, 27, 36, 0.96);
+  background: var(--header-bg);
   border-bottom: 1px solid var(--border);
   gap: var(--space-3);
 }
