@@ -12,8 +12,8 @@
 .deadline-card::before {
   content: '';
   position: absolute;
-  inset: 12px auto 12px 0;
-  width: 4px;
+  inset: 10px auto 10px 0;
+  width: 3px;
   border-radius: 0 999px 999px 0;
   background: var(--tone-bar, transparent);
 }
@@ -21,8 +21,8 @@
 .deadline-card__main {
   display: flex;
   align-items: stretch;
-  gap: 13px;
-  padding: 15px 14px 15px 17px;
+  gap: 10px;
+  padding: 10px 11px 10px 14px;
   width: 100%;
   text-align: left;
 }
@@ -38,19 +38,19 @@
 /* D-day 블록 — 가장 먼저 읽히는 영역 */
 .deadline-card__dday {
   flex: none;
-  width: 60px;
-  min-height: 58px;
+  width: 50px;
+  min-height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 15px;
+  border-radius: 13px;
   background: #fff;
   border: 1px solid var(--border);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 .deadline-card__dday-value {
-  font-size: 16px;
+  font-size: 13.5px;
   font-weight: 800;
   letter-spacing: -0.03em;
   color: var(--tone-color, var(--text));
@@ -64,11 +64,11 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 7px;
+  gap: 5px;
 }
 
 .deadline-card__title {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 800;
   line-height: 1.35;
   letter-spacing: -0.01em;
@@ -85,8 +85,8 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 7px;
-  font-size: 12.5px;
+  gap: 6px;
+  font-size: 11.5px;
   color: var(--text-dim);
   min-width: 0;
 }
@@ -99,7 +99,9 @@
 
 .deadline-card__category svg {
   flex: none;
-  stroke-width: 1.9;
+  width: 15px;
+  height: 15px;
+  stroke-width: 1.8;
   color: var(--text-dim);
 }
 
@@ -109,20 +111,20 @@
 
 .deadline-card__flag {
   flex: none;
-  font-size: 11.5px;
+  font-size: 10.5px;
   font-weight: 700;
   color: var(--accent);
   background: var(--accent-soft);
-  padding: 3px 8px;
+  padding: 2px 7px;
   border-radius: var(--radius-pill);
 }
 
 /* 상태 배지 — color 키를 CSS 변수로 매핑 */
 .deadline-card__status {
   flex: none;
-  font-size: 11.5px;
+  font-size: 10.5px;
   font-weight: 700;
-  padding: 3px 8px;
+  padding: 2px 7px;
   border-radius: var(--radius-pill);
   color: var(--text-dim);
   background: var(--surface-3);
@@ -176,6 +178,8 @@
 }
 
 .deadline-card__chevron svg {
+  width: 20px;
+  height: 20px;
   stroke-width: 2.1;
 }
 
