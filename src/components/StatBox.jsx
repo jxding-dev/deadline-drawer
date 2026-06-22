@@ -1,12 +1,19 @@
+import Icon from './Icon'
 import './StatBox.css'
 
-// 통계 수치 한 칸. 숫자를 크게, 라벨은 짧게.
-// tone: 'neutral' | 'ok' | 'overdue' | 'hold'
-export default function StatBox({ label, value, tone = 'neutral' }) {
+// 기록 화면 통계 카드: 아이콘 칩 + 큰 숫자 + 라벨 + 화살표.
+// color: 'accent' | 'ok' | 'danger' | 'neutral'
+export default function StatBox({ label, value, icon, color = 'neutral' }) {
   return (
-    <div className="stat-box" data-tone={tone} data-empty={value === 0}>
-      <span className="stat-box__value">{value}</span>
-      <span className="stat-box__label">{label}</span>
+    <div className="stat-box" data-color={color}>
+      <span className="stat-box__icon">
+        <Icon name={icon} size={19} />
+      </span>
+      <div className="stat-box__text">
+        <span className="stat-box__value">{value}</span>
+        <span className="stat-box__label">{label}</span>
+      </div>
+      <span className="stat-box__chevron" aria-hidden="true">›</span>
     </div>
   )
 }

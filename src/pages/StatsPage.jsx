@@ -1,6 +1,7 @@
 import MonthlySummary from '../components/MonthlySummary'
 import DeadlineCard from '../components/DeadlineCard'
 import EmptyState from '../components/EmptyState'
+import Icon from '../components/Icon'
 import {
   getMonthItems,
   getMonthStats,
@@ -11,6 +12,8 @@ import {
 import { getCompletedItems } from '../utils/deadlineFilters'
 import './StatsPage.css'
 
+const IMPORTANCE_ICON = { high: 'warn', medium: 'dot', low: 'arrowDown' }
+
 // 라이브러리 없이 CSS 막대만으로 개수를 표현.
 function CountBars({ rows }) {
   const max = Math.max(1, ...rows.map((r) => r.count))
@@ -18,10 +21,14 @@ function CountBars({ rows }) {
     <ul className="bars">
       {rows.map((r) => (
         <li className="bar" key={r.id}>
-          <span className="bar__label">
-            {r.icon && <span aria-hidden="true">{r.icon}</span>}
-            {r.label}
+          <span className="bar__chip" data-color={r.color || 'neutral'}>
+            {r.icon ? (
+              <span aria-hidden="true">{r.icon}</span>
+            ) : (
+              <Icon name={IMPORTANCE_ICON[r.id]} size={16} />
+            )}
           </span>
+          <span className="bar__label">{r.label}</span>
           <span className="bar__track">
             <span
               className="bar__fill"

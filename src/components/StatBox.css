@@ -1,22 +1,41 @@
 .stat-box {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  align-items: center;
+  gap: 11px;
   min-width: 0;
-  padding: var(--space-3);
+  padding: 14px 13px;
   background: var(--surface-2);
   border: 1px solid var(--border);
-  border-radius: 14px;
+  border-radius: 18px;
   box-shadow: var(--shadow-card);
-  border-top: 3px solid var(--tone-color, var(--border));
+}
+
+.stat-box__icon {
+  flex: none;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  color: var(--chip-color, var(--text-dim));
+  background: var(--chip-soft, var(--surface-3));
+}
+
+.stat-box__text {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
 }
 
 .stat-box__value {
-  font-size: 28px;
+  font-size: 23px;
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: -0.02em;
-  color: var(--tone-color, var(--text));
+  color: var(--text);
   font-variant-numeric: tabular-nums;
 }
 
@@ -25,22 +44,30 @@
   font-weight: 600;
   color: var(--text-dim);
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.stat-box[data-tone='neutral'] {
-  --tone-color: var(--text);
-}
-.stat-box[data-tone='ok'] {
-  --tone-color: var(--ok);
-}
-.stat-box[data-tone='overdue'] {
-  --tone-color: var(--danger);
-}
-.stat-box[data-tone='hold'] {
-  --tone-color: var(--text-dim);
-}
-
-/* 0이면 숫자를 죽여 과한 강조를 피한다 */
-.stat-box[data-empty='true'] .stat-box__value {
+.stat-box__chevron {
+  flex: none;
+  font-size: 19px;
+  line-height: 1;
   color: var(--text-faint);
+}
+
+.stat-box[data-color='accent'] {
+  --chip-color: var(--accent);
+  --chip-soft: var(--accent-soft);
+}
+.stat-box[data-color='ok'] {
+  --chip-color: var(--ok);
+  --chip-soft: var(--ok-soft);
+}
+.stat-box[data-color='danger'] {
+  --chip-color: var(--danger);
+  --chip-soft: var(--danger-soft);
+}
+.stat-box[data-color='neutral'] {
+  --chip-color: var(--text-dim);
+  --chip-soft: var(--surface-3);
 }

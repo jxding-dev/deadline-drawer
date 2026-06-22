@@ -11,7 +11,12 @@ import {
 import './HomePage.css'
 
 // 홈 = "위험한 기한 알림판". 지금 터질 기한을 가장 먼저 보여준다.
-export default function HomePage({ deadlines = [], onOpenItem, onQuickAdd }) {
+export default function HomePage({
+  deadlines = [],
+  onOpenItem,
+  onQuickAdd,
+  onViewAll,
+}) {
   const todayCount = getDueTodayItems(deadlines).length
   const weekCount = getThisWeekItems(deadlines).length
   const overdueCount = getOverdueItems(deadlines).length
@@ -26,12 +31,19 @@ export default function HomePage({ deadlines = [], onOpenItem, onQuickAdd }) {
       </div>
 
       <div className="home__section">
-        <h2 className="home__heading">
-          지금 챙겨야 할 기한
-          {urgent.length > 0 && (
-            <span className="home__heading-count">{urgent.length}</span>
+        <div className="home__section-head">
+          <h2 className="home__heading">
+            지금 챙겨야 할 기한
+            {urgent.length > 0 && (
+              <span className="home__heading-count">{urgent.length}</span>
+            )}
+          </h2>
+          {onViewAll && (
+            <button type="button" className="home__view-all" onClick={onViewAll}>
+              전체보기 ›
+            </button>
           )}
-        </h2>
+        </div>
 
         {urgent.length > 0 ? (
           <ul className="home__list">

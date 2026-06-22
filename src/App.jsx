@@ -154,6 +154,7 @@ export default function App() {
           deadlines={deadlines}
           onOpenItem={openDetail}
           onQuickAdd={() => setScreen({ type: 'add' })}
+          onViewAll={() => setActiveTab('all')}
         />
       )}
       {activeTab === 'stats' && (
