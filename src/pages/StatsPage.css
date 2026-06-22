@@ -1,7 +1,8 @@
 .stats-page {
   display: flex;
   flex-direction: column;
-  gap: var(--space-5);
+  gap: 10px;
+  margin-top: -10px;
   padding-bottom: calc(var(--tabbar-h) + var(--space-5));
 }
 
