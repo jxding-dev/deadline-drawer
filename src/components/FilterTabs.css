@@ -2,12 +2,11 @@
   display: flex;
   gap: 7px;
   overflow-x: auto;
-  /* 가로 스크롤 — 스크롤바는 숨기고 끝까지 보이게 */
+  /* 가로 스크롤 — 스크롤바는 숨기고 본문 기준선 안에서 정렬 */
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
-  /* 본문 좌우 패딩을 넘어 화면 끝까지 스크롤되도록 */
-  margin: 0 calc(-1 * var(--space-4));
-  padding: 0 var(--space-4) var(--space-1);
+  margin: 0;
+  padding: 0 0 var(--space-1);
 }
 
 .filter-tabs::-webkit-scrollbar {

@@ -4,8 +4,8 @@
   overflow-x: auto;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
-  margin: 0 calc(-1 * var(--space-4));
-  padding: 0 var(--space-4) var(--space-1);
+  margin: 0;
+  padding: 0 0 var(--space-1);
 }
 
 .category-chips::-webkit-scrollbar {

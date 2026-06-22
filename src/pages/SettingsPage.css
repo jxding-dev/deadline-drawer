@@ -82,34 +82,29 @@
 
 /* 카테고리 목록 */
 .cat-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
 }
 
 .cat-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-2);
-  min-height: 50px;
-  padding: 9px 12px;
+  gap: 6px;
+  min-height: 38px;
+  padding: 8px 9px;
   background: var(--surface);
-  border-bottom: 1px solid var(--border);
-}
-.cat-item:last-child {
-  border-bottom: none;
+  border: 1px solid var(--border);
+  border-radius: 12px;
 }
 
 .cat-item__main {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   min-width: 0;
-  font-size: 14px;
+  font-size: 12.5px;
   font-weight: 600;
   color: var(--text);
   overflow: hidden;
@@ -125,22 +120,22 @@
 
 .cat-item__badge {
   flex: none;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
   color: var(--text-faint);
   background: var(--surface-3);
   border: 1px solid var(--border);
-  padding: 2px 8px;
+  padding: 1px 6px;
   border-radius: var(--radius-pill);
 }
 
 .cat-item__remove {
   flex: none;
-  font-size: 12px;
+  font-size: 10.5px;
   font-weight: 700;
   color: var(--danger);
   background: var(--danger-soft);
-  padding: 5px 10px;
+  padding: 4px 7px;
   border-radius: var(--radius-pill);
 }
 
@@ -148,8 +143,8 @@
 .cat-add {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding-top: var(--space-3);
+  gap: 8px;
+  padding-top: 10px;
   border-top: 1px solid var(--border);
 }
 
@@ -160,8 +155,8 @@
 }
 
 .cat-add__icon {
-  width: 34px;
-  height: 34px;
+  width: 30px;
+  height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -183,9 +178,9 @@
 .cat-add__input {
   flex: 1 1 auto;
   min-width: 0;
-  min-height: 44px;
-  padding: 10px 14px;
-  font-size: 14px;
+  min-height: 40px;
+  padding: 9px 12px;
+  font-size: 13px;
   font-family: inherit;
   color: var(--text);
   background: var(--surface-3);
@@ -201,7 +196,7 @@
 }
 
 .cat-add__btn {
-  flex: 0 0 64px;
+  flex: 0 0 58px;
 }
 
 /* 공통 버튼 */
