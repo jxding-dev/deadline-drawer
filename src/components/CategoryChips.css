@@ -1,11 +1,11 @@
 .category-chips {
   display: flex;
-  gap: 7px;
+  gap: 12px;
   overflow-x: auto;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
   margin: 0 calc(-1 * var(--space-4));
-  padding: 0 var(--space-4) var(--space-1);
+  padding: var(--space-2) var(--space-4) var(--space-2);
 }
 
 .category-chips::-webkit-scrollbar {
@@ -16,20 +16,22 @@
   flex: none;
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 10px;
   white-space: nowrap;
-  padding: 6px 11px;
-  font-size: 12px;
-  font-weight: 600;
+  min-height: 46px;
+  padding: 0 17px;
+  font-size: 15px;
+  font-weight: 700;
   color: var(--text-dim);
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius-pill);
+  border-radius: 18px;
+  box-shadow: 0 1px 2px rgba(20, 23, 33, 0.03);
 }
 
-.category-chip span[aria-hidden='true'] {
-  opacity: 0.75;
-  filter: saturate(0.65);
+.category-chip svg {
+  flex: none;
+  stroke-width: 1.9;
 }
 
 .category-chip[data-active='true'] {

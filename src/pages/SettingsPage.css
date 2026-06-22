@@ -117,6 +117,12 @@
   white-space: nowrap;
 }
 
+.cat-item__main svg {
+  flex: none;
+  color: var(--text-dim);
+  stroke-width: 1.9;
+}
+
 .cat-item__badge {
   flex: none;
   font-size: 11px;

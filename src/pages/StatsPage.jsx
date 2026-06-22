@@ -2,6 +2,7 @@ import MonthlySummary from '../components/MonthlySummary'
 import DeadlineCard from '../components/DeadlineCard'
 import EmptyState from '../components/EmptyState'
 import Icon from '../components/Icon'
+import { getCategoryIconName } from '../components/iconNames'
 import {
   getMonthItems,
   getMonthStats,
@@ -23,7 +24,7 @@ function CountBars({ rows }) {
         <li className="bar" key={r.id}>
           <span className="bar__chip" data-color={r.color || 'neutral'}>
             {r.icon ? (
-              <span aria-hidden="true">{r.icon}</span>
+              <Icon name={getCategoryIconName(r.id)} size={16} />
             ) : (
               <Icon name={IMPORTANCE_ICON[r.id]} size={16} />
             )}

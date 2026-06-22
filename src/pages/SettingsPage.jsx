@@ -1,5 +1,7 @@
 import { useRef, useState } from 'react'
 import { isDefaultCategory } from '../data/defaultCategories'
+import Icon from '../components/Icon'
+import { getCategoryIconName } from '../components/iconNames'
 import './SettingsPage.css'
 
 const APP_VERSION = 'v1.0.0'
@@ -86,7 +88,11 @@ export default function SettingsPage({
               return (
                 <li className="cat-item" key={c.id}>
                   <span className="cat-item__main">
-                    <span aria-hidden="true">{c.icon}</span>
+                    {isDefault ? (
+                      <Icon name={getCategoryIconName(c.id)} size={17} />
+                    ) : (
+                      <span aria-hidden="true">{c.icon}</span>
+                    )}
                     {c.label}
                   </span>
                   {isDefault ? (

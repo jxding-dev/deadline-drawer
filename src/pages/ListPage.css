@@ -1,7 +1,7 @@
 .list-page {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 18px;
   /* 하단 탭바와 겹치지 않게 */
   padding-bottom: calc(var(--tabbar-h) + var(--space-5));
 }
@@ -14,21 +14,21 @@
 }
 
 .list-page__title {
-  font-size: 20px;
+  font-size: 27px;
   font-weight: 800;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.045em;
 }
 
 .list-page__count {
-  font-size: 12.5px;
+  font-size: 18px;
   font-weight: 700;
-  color: var(--text-faint);
+  color: var(--text-dim);
   font-variant-numeric: tabular-nums;
 }
 
 .list-page__list {
   display: flex;
   flex-direction: column;
-  gap: 10px; /* 카드 간격은 좁게 */
-  margin-top: var(--space-1);
+  gap: 16px;
+  margin-top: var(--space-2);
 }

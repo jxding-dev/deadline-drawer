@@ -1,4 +1,6 @@
 import { TABS } from '../data/tabs'
+import Icon from './Icon'
+import { getTabIconName } from './iconNames'
 import './TabBar.css'
 
 export default function TabBar({ active, onChange }) {
@@ -16,7 +18,7 @@ export default function TabBar({ active, onChange }) {
             onClick={() => onChange(tab.id)}
           >
             <span className="tab__icon" aria-hidden="true">
-              {tab.icon}
+              <Icon name={getTabIconName(tab.id)} size={24} />
             </span>
             <span className="tab__label">{tab.label}</span>
           </button>

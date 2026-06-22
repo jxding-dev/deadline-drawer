@@ -88,6 +88,10 @@
   color: var(--chip-color, var(--text-dim));
   background: var(--chip-soft, var(--surface-3));
 }
+
+.bar__chip svg {
+  stroke-width: 1.9;
+}
 .bar__chip[data-color='danger'] {
   --chip-color: var(--danger);
   --chip-soft: var(--danger-soft);

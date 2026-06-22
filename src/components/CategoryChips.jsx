@@ -1,4 +1,6 @@
 import { getAllCategories } from '../data/defaultCategories'
+import Icon from './Icon'
+import { getCategoryIconName } from './iconNames'
 import './CategoryChips.css'
 
 // '전체' + 카테고리 칩. 가로 스크롤. active 는 카테고리 id 또는 'all'.
@@ -7,7 +9,7 @@ export default function CategoryChips({
   onChange,
   categories = getAllCategories(),
 }) {
-  const chips = [{ id: 'all', label: '전체', icon: '🗂️' }, ...categories]
+  const chips = [{ id: 'all', label: '전체' }, ...categories]
   return (
     <div className="category-chips" aria-label="카테고리 필터">
       {chips.map((c) => (
@@ -19,7 +21,7 @@ export default function CategoryChips({
           aria-pressed={c.id === active}
           onClick={() => onChange(c.id)}
         >
-          <span aria-hidden="true">{c.icon}</span>
+          <Icon name={getCategoryIconName(c.id)} size={18} />
           {c.label}
         </button>
       ))}

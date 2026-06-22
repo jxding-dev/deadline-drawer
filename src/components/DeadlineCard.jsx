@@ -1,6 +1,8 @@
 import { formatDday, formatDate, isOverdue, isDueToday } from '../utils/dateUtils'
 import { getCategory } from '../data/defaultCategories'
 import { getStatus } from '../utils/labelUtils'
+import Icon from './Icon'
+import { getCategoryIconName } from './iconNames'
 import './DeadlineCard.css'
 
 // 마감 항목 한 건을 카드로. D-day 를 가장 크게, 위험할수록 강하게 보여준다.
@@ -73,7 +75,7 @@ export default function DeadlineCard({
           <h3 className="deadline-card__title">{item.title}</h3>
           <div className="deadline-card__meta">
             <span className="deadline-card__category">
-              <span aria-hidden="true">{category.icon}</span>
+              <Icon name={getCategoryIconName(item.category)} size={18} />
               {category.label}
             </span>
             {item.dueDate && (
@@ -93,6 +95,11 @@ export default function DeadlineCard({
             )}
           </div>
         </div>
+        {onOpen && (
+          <span className="deadline-card__chevron" aria-hidden="true">
+            <Icon name="chevronRight" size={24} />
+          </span>
+        )}
       </div>
 
       {hasActions && (
