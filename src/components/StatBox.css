@@ -1,17 +1,17 @@
 .stat-box {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
   min-width: 0;
   padding: var(--space-3);
-  background: var(--surface-2);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.018), transparent), var(--surface-2);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
-  border-top: 2px solid var(--tone-color, var(--border));
+  border-radius: 14px;
+  border-top: 3px solid var(--tone-color, var(--border));
 }
 
 .stat-box__value {
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: -0.02em;
@@ -20,7 +20,7 @@
 }
 
 .stat-box__label {
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 600;
   color: var(--text-dim);
   white-space: nowrap;

@@ -1,44 +1,44 @@
 :root {
   /* 색 — 차분한 다크 베이스 + 긴장감을 주는 포인트 컬러 */
-  --bg: #14161c;          /* 앱 바깥 배경 (프레임 밖) */
-  --surface: #1b1e27;     /* 앱 프레임 본문 배경 */
-  --surface-2: #232733;   /* 카드 배경 */
-  --surface-3: #2c313f;   /* 카드 위 요소 / hover */
+  --bg: #12151c;          /* 앱 바깥 배경 (프레임 밖) */
+  --surface: #171b24;     /* 앱 프레임 본문 배경 */
+  --surface-2: #202530;   /* 카드 배경 */
+  --surface-3: #29303c;   /* 카드 위 요소 / hover */
 
-  --text: #eef1f7;        /* 기본 텍스트 */
-  --text-dim: #9aa1b1;    /* 보조 텍스트 */
-  --text-faint: #6b7283;  /* 더 흐린 텍스트 */
-  --border: #2f3441;      /* 구분선 / 카드 테두리 */
+  --text: #f3f5f9;        /* 기본 텍스트 */
+  --text-dim: #a7afbf;    /* 보조 텍스트 */
+  --text-faint: #747d8f;  /* 더 흐린 텍스트 */
+  --border: #343b4a;      /* 구분선 / 카드 테두리 */
 
-  --accent: #f5a524;      /* 임박 — 앰버 */
-  --accent-soft: rgba(245, 165, 36, 0.14);
-  --danger: #f4544c;      /* 기한 지남 — 레드 */
-  --danger-soft: rgba(244, 84, 76, 0.14);
-  --ok: #4cc9a0;          /* 여유 — 차분한 그린 */
-  --ok-soft: rgba(76, 201, 160, 0.14);
+  --accent: #f0a72f;      /* 임박 — 앰버 */
+  --accent-soft: rgba(240, 167, 47, 0.13);
+  --danger: #ef645f;      /* 기한 지남 — 레드 */
+  --danger-soft: rgba(239, 100, 95, 0.13);
+  --ok: #58c9a8;          /* 여유 — 차분한 그린 */
+  --ok-soft: rgba(88, 201, 168, 0.13);
 
   /* 간격 */
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
-  --space-4: 16px;
-  --space-5: 24px;
-  --space-6: 32px;
+  --space-4: 18px;
+  --space-5: 26px;
+  --space-6: 36px;
 
   /* 모서리 */
-  --radius: 12px;
-  --radius-lg: 18px;
+  --radius: 10px;
+  --radius-lg: 16px;
   --radius-pill: 999px;
 
   /* 레이아웃 */
   --app-max-width: 480px;
-  --header-h: 60px;
-  --tabbar-h: 60px;
+  --header-h: 68px;
+  --tabbar-h: 64px;
 
   /* 타이포 — 외부 폰트 없이 시스템 스택 */
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Pretendard",
     "Apple SD Gothic Neo", "Malgun Gothic", Roboto, "Noto Sans KR", sans-serif;
 
   /* 그림자 */
-  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-card: 0 10px 28px rgba(0, 0, 0, 0.18);
 }

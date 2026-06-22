@@ -7,7 +7,9 @@
   min-height: 0;
   display: flex;
   flex-direction: column;
-  background: var(--surface);
+  background:
+    radial-gradient(circle at 50% -120px, rgba(240, 167, 47, 0.08), transparent 34%),
+    var(--surface);
   /* 480px↑ 에서 중앙 모바일 프레임처럼 보이도록 양옆 경계 */
   overflow: hidden;
 }
@@ -19,4 +21,5 @@
   overscroll-behavior-y: contain;
   -webkit-overflow-scrolling: touch;
   padding: var(--space-4);
+  background: transparent;
 }

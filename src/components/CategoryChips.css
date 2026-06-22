@@ -1,6 +1,6 @@
 .category-chips {
   display: flex;
-  gap: var(--space-2);
+  gap: 7px;
   overflow-x: auto;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
@@ -18,17 +18,22 @@
   align-items: center;
   gap: 5px;
   white-space: nowrap;
-  padding: 6px 12px;
-  font-size: 12.5px;
+  padding: 5px 10px;
+  font-size: 12px;
   font-weight: 600;
   color: var(--text-dim);
-  background: var(--surface-2);
+  background: rgba(255, 255, 255, 0.025);
   border: 1px solid var(--border);
-  border-radius: var(--radius-pill);
+  border-radius: 10px;
+}
+
+.category-chip span[aria-hidden='true'] {
+  opacity: 0.75;
+  filter: saturate(0.65);
 }
 
 .category-chip[data-active='true'] {
   color: var(--text);
   background: var(--surface-3);
-  border-color: var(--text-faint);
+  border-color: rgba(167, 175, 191, 0.42);
 }
